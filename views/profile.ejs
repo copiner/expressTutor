@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <meta charset='utf-8'>
+  <title>EJS</title>
+  <head></head>
+  <body>
+    <% include partials/nav.ejs %>
+    <h2>hey ejs <%= id%></h2>
+    <p><b>Age:</b><%= data.age%></p>
+    <p><b>Job:</b><%= data.job%></p>
+    <ul>
+      <% data.hobbies.forEach(function(item){%>
+      <li><%= item%></li>
+      <%})%>
+    </ul>
+  </body>
+</html>
+
+  

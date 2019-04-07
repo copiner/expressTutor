@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <meta charset='utf-8'>
+  <title>ROUTES</title>
+  <head></head>
+  <body>
+    <h2>hey dudes contacts</h2>
+    
+    <% include partials/nav.ejs %>
+    <form id="cInfo" method="POST" action="/contact">
+      <input type="text" name="who" placeholder="name" value="<%= qs.name%>" >
+      <input type="text" name="dept" placeholder="dept" value="<%= qs.dept%>" >
+      <input type="text" name="email" placeholder="email" > 
+      <input type="submit" value="submit">
+    </form>
+  </body>
+</html>
+
+  
