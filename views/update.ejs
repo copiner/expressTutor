@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>UPDATE</title>
+    <link rel='stylesheet' href='/stylesheets/input.css' />
+</head>
+<body>
+  <form action="/users/update" method="post">
+      <input type="text" name="name" value="<%= datas[0].name %>">
+      <input type="text" name="age" value="<%= datas[0].age %>">
+      <input type="hidden" name="id" value="<%= datas[0].id %>">
+      <p><input type="submit" value="update"></p>
+  </form>
+</body>
+</html>

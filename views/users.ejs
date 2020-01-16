@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>users</title>
+    <link rel='stylesheet' href='/stylesheets/users.css' />
+</head>
+<body>
+<table>
+    <tr>
+        <th colspan="5"><%= title %></th>
+    </tr>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>age</th>
+        <th><a href="/users/search">search</a></th>
+        <th><a href="/users/insert">insert</a></th>
+    </tr>
+    <% for(var i = 0; i < datas.length; i++) {%>
+        <tr>
+            <td><%= datas[i].id %></td>
+            <td><%= datas[i].age %></td>
+            <td><%= datas[i].name %></td>
+            <td><a href="/users/delete/<%= datas[i].id %>">delete</a></td>
+            <td><a href="/users/update/<%= datas[i].id %>">update</a></td>
+        </tr>
+    <% } %>
+</table>
+</body>
+</html>

@@ -1,41 +1,54 @@
-
 var express = require('express');
+var favicon = require('serve-favicon');
+var path = require('path');
+var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var rfs = require('rotating-file-stream');
 
 var app = express();
 
-var urlencodedParser = bodyParser.urlencoded({extend:false});
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use('/assets',express.static('public/assets'));
-/*
-app.use('/public',function(req,res,next){
-    console.log(req.url);
-    next();
-});
-*/
+// create a rotating write stream
+var accessLogStream = rfs('access.log', {
+  interval: '1d', // rotate daily
+  path: path.join(__dirname, 'logs')
+})
 
-app.get('/', function(req,res){
-    //    res.sendFile(__dirname + "/index.html");
-    res.render("index");
+// uncomment after placing your favicon in /public
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
+app.use(morgan('combined', { stream: accessLogStream }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+var index = require('./routes/index');
+var users = require('./routes/users');
+
+app.use('/', index);
+app.use('/users', users);
+
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
-app.get('/contact',function(req,res){
-    //    res.sendFile(__dirname + '/contact.html');
-//    console.log(req.query);
-    res.render("contact",{qs:req.query});
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
 });
 
-app.post('/contact',urlencodedParser,function(req,res){
-//    console.log(req.body);
-    res.render("user",{data:req.body});
-});
-
-app.get('/profile/:id',function(req,res){
-    var data = {age:19,job:'engine',hobbies:['apple','orange','pitch']};
-    res.render('profile',{id : req.params.id, data:data});
-});
-
-app.listen(3000,function(){
-    console.log("now listening at 3000");
-});
+module.exports = app;

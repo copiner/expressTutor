@@ -1,0 +1,52 @@
+html, body, form, label, p, input{
+  padding: 0;
+  margin: 0;
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #999;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #999;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #999;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #999;
+}
+
+body {
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+form {
+  width: 75%;
+  margin: 12% auto;
+}
+
+form>input{
+  border-bottom: 1px solid red;
+  border-top: none;
+  border-left:  none;
+  border-right: none;
+  display: block;
+  width: 100%;
+  padding: 1em 0 0.2em 0;
+  margin: 1em 0;
+  outline: none;
+  font-size: 1em;
+}
+p input{
+  width: 100%;
+  border: none;
+  padding: 0.8em 0;
+  margin: 1em 0;
+  /*word-spacing:8px;*/
+  letter-spacing: 2px;
+  background-color: #000;
+  color: #fff;
+}
