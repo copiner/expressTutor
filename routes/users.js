@@ -7,9 +7,7 @@ router.get("/", function(req, res, next){
 		if(err){
 			res.render("users", {title:"user list", datas:[]});
 		} else {
-			console.log("****************************************");
-			console.log(result);
-			console.log("****************************************");
+
 			res.render("users", {title:"All Users List", datas: result});
 		}
 	});

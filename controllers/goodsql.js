@@ -6,8 +6,8 @@ var good={
 	//改
 	goodupdate:'UPDATE `good` SET `name`=?,`desc`=?,`price`=?,`sum`=? WHERE `id`=?',
     //查
-    goodAll: 'select * from good',
-    goodById: 'select * from good where id=?'
+  goodAll: 'select * from good',
+  goodById: 'select * from good where id=?'
 }
 
 module.exports = good;

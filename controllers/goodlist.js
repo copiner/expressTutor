@@ -1,6 +1,6 @@
 //实现与mysql交互
 var mysql=require('mysql');
-var $conf=require('../conf/db.js');
+var $conf=require('../config/db.js');
 var $util=require('../util/util.js');
 var $sql=require('./goodsql.js');
 //使用连接池
